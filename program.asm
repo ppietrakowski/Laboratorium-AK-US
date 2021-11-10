@@ -98,8 +98,13 @@ WYNIK_Przen
 ODEJMOWANIE
     CALL WCZYTAJ_LICZBE
     MOV A,C
-    
+    SUB E
     MOV C,A
+
+    MOV A,B
+    SUB D
+    MOV B,A
+
     JMP Wynik
 
 ; "assety"
