@@ -31,6 +31,8 @@ ZNAK_DZIALANIA
     CPI '+'
     JZ DODAWANIE
 
+    CPI '-'
+    JZ ODEJMOWANIE
     ; nie znaleziono odpowiedniego operatora->popros o wprowadzenie ponownie
     JMP ZNAK_DZIALANIA
 
@@ -92,6 +94,13 @@ WYNIK_Przen
     RST 1
     RET
 
+; odejmuje liczby bez znaku w ZM
+ODEJMOWANIE
+    CALL WCZYTAJ_LICZBE
+    MOV A,C
+    
+    MOV C,A
+    JMP Wynik
 
 ; "assety"
 SYM_NOWALINIA    DB 10,13,'@'
