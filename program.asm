@@ -54,6 +54,8 @@ WYNIK
 ; wczytuje liczbe i zapisuje w rejestrach DE
 WCZYTAJ_LICZBE
     LXI H,WPR_OPERAND2
+    RST 3
+    
     RST 5
     RET
 
