@@ -102,9 +102,9 @@ ODEJMOWANIE
     CALL WCZYTAJ_LICZBE
     
     MOV A,B
-    CPI D
+    CMP D
     JZ TE_SAME
-    JP DALEJ
+    JNC DALEJ
 
 ; pierwsza jest mniejsza od drugiej
 MNIEJSZA
@@ -120,7 +120,7 @@ MNIEJSZA
 ; te same starsze 8-bit
 TE_SAME
     MOV A,C
-    CPI E
+    CMP E
     JM MNIEJSZA
 
 DALEJ
