@@ -98,32 +98,36 @@ WYNIK_Przen
     RET
 
 ; odejmuje liczby bez znaku w ZM
+; ZM gdy odejmuje sie, to sie sprawdza moduly liczb( w tym przypadku cala liczbe)
+; jesli pierwszy jest mniejszy, to nalezy go zamienic z drugim i ustawic bit znaku na 1
+; potem wykonujemy "zwyczajne" odejmowanie liczb binarnych
 ODEJMOWANIE
     CALL WCZYTAJ_LICZBE
     
+    ; porownanie pierwsza z druga
     MOV A,B
     CMP D
     JZ TE_SAME
-    JNC DALEJ
+
+    ; odejmij, gdy sa pierwsza > druga
+    JNC ZW_ODEJMOWANIE
 
 ; pierwsza jest mniejsza od drugiej
-MNIEJSZA
-
+ZAMIANA
     MOV D,A
     PUSH B
     MOV B,D
     MOV C,E
     POP D
 
-    JMP DALEJ
-
+    JMP ZW_ODEJMOWANIE
 ; te same starsze 8-bit
 TE_SAME
     MOV A,C
     CMP E
-    JM MNIEJSZA
+    JM ZAMIANA
 
-DALEJ
+ZW_ODEJMOWANIE
     MOV A,C
     SUB E
     MOV C,A
