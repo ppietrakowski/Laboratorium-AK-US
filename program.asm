@@ -86,8 +86,11 @@ DODAWANIE
     MOV A,B
     ADC D
     MOV B,A
+
     JMP Wynik
-    
+
+WRZUC_1_NA_STOS
+  
 ; wyswietla jedynke na znak, ze nastapilo przeniesienie
 WYNIK_Przen
     MVI A,'1'
@@ -97,12 +100,36 @@ WYNIK_Przen
 ; odejmuje liczby bez znaku w ZM
 ODEJMOWANIE
     CALL WCZYTAJ_LICZBE
+    
+    MOV A,B
+    CPI D
+    JZ TE_SAME
+    JP DALEJ
+
+; pierwsza jest mniejsza od drugiej
+MNIEJSZA
+
+    MOV D,A
+    PUSH B
+    MOV B,D
+    MOV C,E
+    POP D
+
+    JMP DALEJ
+
+; te same starsze 8-bit
+TE_SAME
+    MOV A,C
+    CPI E
+    JM MNIEJSZA
+
+DALEJ
     MOV A,C
     SUB E
     MOV C,A
 
     MOV A,B
-    SUB D
+    SBB D
     MOV B,A
 
     JMP Wynik
