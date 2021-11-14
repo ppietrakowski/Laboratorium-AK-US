@@ -105,21 +105,20 @@ ODEJMOWANIE
     ; porownanie pierwsza z druga
     MOV A,B
     CMP D
-    MVI A,0
+    MVI H,0
     JZ TE_SAME
     ; odejmij, gdy sa pierwsza > druga
     JNC ZW_ODEJMOWANIE
 
 ; pierwsza jest mniejsza od drugiej
 ZAMIANA
-    MOV D,A
     PUSH B
     MOV B,D
     MOV C,E
     POP D
 
     ; jezeli byla zamiana wyswietl -
-    MVI A,'-'
+    MVI H,'-'
     CMC
 
     JMP ZW_ODEJMOWANIE
@@ -131,8 +130,6 @@ TE_SAME
     JM ZAMIANA
 
 ZW_ODEJMOWANIE
-    MOV H,A
-
     MOV A,C
     SUB E
     MOV C,A
