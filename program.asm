@@ -108,8 +108,8 @@ ODEJMOWANIE
     ; porownanie pierwsza z druga
     MOV A,B
     CMP D
-    JZ TE_SAME
     MVI A,0
+    JZ TE_SAME
     ; odejmij, gdy sa pierwsza > druga
     JNC ZW_ODEJMOWANIE
 
