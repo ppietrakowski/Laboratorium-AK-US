@@ -78,15 +78,12 @@ NEGACJA
 ; zapisuje pod koniec w A '1', jesli bylo przeniesienie na najstarszym bicie 
 DODAWANIE
     CALL WCZYTAJ_LICZBE
-    ; pierwsze dodawanie mozna wykonac bez przeniesienia
-    MOV A,C
-    ADD E
-    MOV C,A
+    XCHG
+    DAD B
+    XCHG
 
-    ; drugie juz trzeba, gdyz moglo na 8-osmym bicie nastapic przeniesienie
-    MOV A,B
-    ADC D
-    MOV B,A
+    MOV B,D
+    MOV C,E
 
     MVI A,0
     CC POKAZ_1
