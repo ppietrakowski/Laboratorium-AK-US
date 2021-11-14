@@ -60,7 +60,7 @@ WCZYTAJ_LICZBE
     RST 3
     RET
 
-; neguje liczbe znajdujaca sie w rejestrach DE
+; neguje liczbe znajdujaca sie w rejestrach BC
 NEGACJA
     MOV A,B
     ; negacja bitow akumulatora
@@ -125,6 +125,7 @@ ZAMIANA
     MVI A,'-'
 
     JMP ZW_ODEJMOWANIE
+    
 ; te same starsze 8-bit
 TE_SAME
     MOV A,C
