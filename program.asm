@@ -120,6 +120,7 @@ ZAMIANA
 
     ; jezeli byla zamiana wyswietl -
     MVI A,'-'
+    CMC
 
     JMP ZW_ODEJMOWANIE
     
